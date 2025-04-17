@@ -65,6 +65,7 @@ public class SecurityConfig {
 				 .authorizeHttpRequests((auth)->{
 				 auth.requestMatchers(HttpMethod.POST,"/auth/new").permitAll();
 				 auth.requestMatchers(HttpMethod.POST,"/auth/login").permitAll();
+				 auth.requestMatchers(HttpMethod.POST,"/auth/reset-password").permitAll();
 				 auth.requestMatchers(HttpMethod.GET,"auth/employee/{empid}").hasAnyAuthority("ROLE_USER", "ROLE_ADMIN"); 
 				 auth.requestMatchers(HttpMethod.GET,"auth/employees").hasAuthority("ROLE_ADMIN");
 				 auth.anyRequest().authenticated();

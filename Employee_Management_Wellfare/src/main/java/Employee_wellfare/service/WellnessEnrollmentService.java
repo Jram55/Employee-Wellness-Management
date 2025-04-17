@@ -4,11 +4,13 @@ import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import Employee_wellfare.entity.ChallengeParticipation;
 import Employee_wellfare.entity.Employee;
 import Employee_wellfare.entity.WellnessEnrollment;
 import Employee_wellfare.entity.WellnessEnrollmentStatus;
@@ -34,6 +36,14 @@ public class WellnessEnrollmentService {
 				.orElseThrow(() -> new RuntimeException("Employee not found"));
 		WellnessProgram wellnessProgram = wellnessProgramRepository.findById(programID)
 				.orElseThrow(() -> new RuntimeException("Wellness Program not found"));
+		
+		Optional<WellnessEnrollment> existingEnrollment = wellnessEnrollmentRepository
+	            .findByEmployeeAndWellnessProgram(employee, wellnessProgram);
+
+	    if (existingEnrollment.isPresent()) {
+	        throw new RuntimeException("Employee is already participating in this challenge.");
+	    }
+		
 		WellnessEnrollment enrollment = new WellnessEnrollment();
 		enrollment.setEmployee(employee);
 		enrollment.setWellnessProgram(wellnessProgram);

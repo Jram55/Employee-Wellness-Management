@@ -2,6 +2,7 @@ package Employee_wellfare.service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,6 +38,13 @@ public class ChallengeParticipationService {
 		Challenge challenge = challengerepo.findById(challengeId)
 				.orElseThrow(() -> new RuntimeException("This Challenge Not Found"));
 
+		Optional<ChallengeParticipation> existingParticipation = challengeparticipationrepo
+	            .findByEmployeeAndChallenge(employee, challenge);
+
+	    if (existingParticipation.isPresent()) {
+	        throw new RuntimeException("Employee is already participating in this challenge.");
+	    }
+		
 		ChallengeParticipation chall = new ChallengeParticipation();
 		chall.setEmployee(employee);
 		chall.setChallenge(challenge);

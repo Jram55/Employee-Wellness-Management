@@ -3,6 +3,7 @@ package Employee_wellfare.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,6 +25,7 @@ public class EventRegistrationController {
 	
 	
 	@PostMapping("/register")
+	@PreAuthorize("hasAnyAuthority( 'ROLE_USER')")
 	public ResponseEntity<EventRegistration> registerEvent(@RequestBody EventRegistrationRequest eventrequest){
 		
 		EventRegistration event=eventregisterservice.registerEmployeeinEvent(eventrequest.getEmployeeId(),eventrequest.getEventId());

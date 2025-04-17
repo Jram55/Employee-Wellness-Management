@@ -3,10 +3,7 @@ package Employee_wellfare.entity;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-
-
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -17,9 +14,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

@@ -4,6 +4,7 @@ package Employee_wellfare.entity;
 
 import java.util.Date;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -28,7 +29,7 @@ public class EventRegistration {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long eventRegistrationId;
 
-    @ManyToOne(fetch=FetchType.EAGER) 
+    @ManyToOne(fetch=FetchType.EAGER,cascade=CascadeType.ALL) 
     @JoinColumn(name = "employee_id")
     private Employee employee; // FK to Employee
 

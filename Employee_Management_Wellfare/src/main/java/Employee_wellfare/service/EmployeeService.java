@@ -113,6 +113,8 @@ public class EmployeeService {
 	    
 	    dto.setChallengeparipation(employee.getChallengeparipation().stream().map(participation -> {
             ChallengeParticipationRequest participationDTO = new ChallengeParticipationRequest();
+            participationDTO.setEmployeeId(participation.getEmployee().getEmployeeId());
+            participationDTO.setChallengeId(participation.getChallenge().getChallengeId());
             participationDTO.setParticipationId(participation.getParticipationId());
             participationDTO.setParticipationDate(participation.getParticipationDate());
             participationDTO.setProgress(participation.getProgress());
@@ -133,6 +135,8 @@ public class EmployeeService {
         // Map event registrations
         dto.setEventRegistrations(employee.getEventRegistrations().stream().map(registration -> {
             EventRegistrationRequest registrationDTO = new EventRegistrationRequest();
+            registrationDTO.setEmployeeId(registration.getEmployee().getEmployeeId());
+            registrationDTO.setEventId(registration.getEvent().getEventId());
             registrationDTO.setEventRegistrationId(registration.getEventRegistrationId());
             registrationDTO.setEventRegistrationDate(registration.getEventRegistrationDate());
             registrationDTO.setEventUnregistrationDate(registration.getEventUnregistrationDate());

@@ -12,14 +12,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 
 public class ChallengeParticipationRequest {
-			
-		private long employeeId ;
-		private long challengeId ;
-		
-		private Long participationId;
-		
-		private LocalDateTime participationDate;
-		private Progress progress;
-		private ChallengeDto challenge;
-	}
 
+	private long employeeId;
+	private long challengeId;
+
+	private Long participationId;
+
+	private LocalDateTime participationDate;
+	private Progress progress;
+	private ChallengeDto challenge;
+}

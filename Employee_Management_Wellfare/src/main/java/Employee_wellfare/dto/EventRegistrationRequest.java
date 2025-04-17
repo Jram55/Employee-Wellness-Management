@@ -10,10 +10,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class EventRegistrationRequest {
-
+	
 	private long employeeId;
 	private long eventId;
 
+	
 	private Long eventRegistrationId;
 
 	private Date eventRegistrationDate;

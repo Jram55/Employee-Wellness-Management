@@ -1,6 +1,7 @@
 package Employee_wellfare.service;
 
 import java.util.Date;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,6 +35,13 @@ public class EventRegistraionService {
 		
 		Employee employee=emprepo.findById(employeeId).orElseThrow(()-> new RuntimeException("Employee Not Found"));
 		Event event=eventrepo.findById(eventId).orElseThrow(()-> new RuntimeException("this Event Not Found"));
+		
+		Optional<EventRegistration> existingParticipation = eventregistrationrepo
+	            .findByEmployeeAndEvent(employee, event);
+
+	    if (existingParticipation.isPresent()) {
+	        throw new RuntimeException("Employee is already participating in this challenge.");
+	    }
 		
 		EventRegistration eventregister=new EventRegistration();
 		eventregister.setEmployee(employee);

@@ -2,6 +2,7 @@ package Employee_wellfare.entity;
 
 import java.time.LocalDateTime;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -25,7 +26,7 @@ public class WellnessEnrollment {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long enrollmentid;
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.EAGER,cascade=CascadeType.ALL)
 	@JoinColumn(name = "employee_id",referencedColumnName = "employeeId")
 
 	private Employee employee; // FK to Employee
